@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="./CSS/main.css" />
+    <title>CRUDS</title>
+  </head>
+  <body>
+    <div class="header d-flex justify-content-center align-items-center">
+      <img src="./img/book.png" class="w-10 px-2" alt="" />
+
+      <h1 class="text-center py-3">Book Shop...</h1>
+    </div>
+    <div class="container py-5">
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control border-start-0 border-end-0 border-top-0 rounded-0 shadow-none"
+          id="bookName"
+          placeholder="Book Name :"
+        />
+        <label for="bookName">Book Name :</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="number"
+          class="form-control border-start-0 border-end-0 border-top-0 rounded-0 shadow-none"
+          id="bookPrice"
+          placeholder="Book Price :"
+        />
+        <label for="bookPrice">Book Price :</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          list="category"
+          class="form-control border-start-0 border-end-0 border-top-0 rounded-0 shadow-none"
+          id="bookCategory"
+          placeholder="Book Category :"
+        />
+        <label for="bookCategory">Book Category :</label>
+        <datalist id="category">
+          <option value="Queran">Queran</option>
+          <option value="Arabic">Arabic</option>
+          <option value="math">math</option>
+          <option value="biology">biology</option>
+          <option value="history">history</option>
+          <option value="English">English</option>
+        </datalist>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control border-start-0 border-end-0 border-top-0 rounded-0 shadow-none"
+          id="bookDesc"
+          placeholder="Book Desc :"
+        />
+        <label for="bookDesc">Book Desc :</label>
+      </div>
+      <button id="addbtn" class="btn btn-info btn-add">AddBook</button>
+      <button id="updatebtn" class="btn btn-add display">Update Book</button>
+    </div>
+    <div class="searchInput container py-5 mt-5">
+      <input
+        type="text"
+        id="search"
+        placeholder="Search....."
+        class="search form-control border-start-0 border-end-0 border-top-0 rounded-0 shadow-none"
+      />
+    </div>
+    <table id="table" class="table container my-5">
+      <thead>
+        <tr>
+          <td class="">Book Name :</td>
+          <td>Book Price :</td>
+          <td>Book Category :</td>
+          <td>Book Desc :</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody id="body"></tbody>
+    </table>
+
+    <script src="./JS/bootstrap.bundle.min.js"></script>
+    <script src="./JS/main.js"></script>
+  </body>
+</html>

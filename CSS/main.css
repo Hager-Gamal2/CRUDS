@@ -1,0 +1,71 @@
+body{
+    background-color: #FFFBDE;
+ font-family: "Pacifico", cursive;
+}
+
+.container{
+    background-color: transparent;
+}
+h1 {
+    color: #749BC2;
+}
+.form-floating>label{
+    color: #749BC2;
+}
+.form-control{
+    background-color: transparent;
+    border-color: #749BC2;
+    
+}
+.form-control:focus{
+background-color: transparent;
+}
+.btn-info{
+    background-color: #FFFBDE;
+    border-color:#FFFBDE  ;
+
+}
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+background-color: #749BC2;
+  border-color:#749BC2  ;
+  
+
+
+}
+.btn:hover {
+   background-color: #749BC2;
+  border-color:#749BC2  ;
+  color: wheat;
+
+
+}
+.table{
+    --bs-table-bg: #91C8E4;
+}
+tbody, td, tfoot, th, thead, tr {
+    background-color: #91C8E4;}
+.btn-danger{
+    background-color: #749BC2;
+    border-color:#749BC2  ;
+  color: wheat;
+
+
+}
+.btn-danger:hover {
+   background-color: #FFFBDE;
+  border-color:#FFFBDE  ;
+    color: #749BC2;
+
+
+}
+.btn-add{
+    background-color: #749BC2;
+    
+}
+.display{
+    display: none;
+}
+img.w-10{
+    width: 70px;
+}
