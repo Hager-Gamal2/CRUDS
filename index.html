@@ -12,13 +12,15 @@
     />
     <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
     <link rel="stylesheet" href="./CSS/main.css" />
+
     <title>CRUDS</title>
   </head>
   <body>
+    <a id="google"></a>
     <div class="header d-flex justify-content-center align-items-center">
       <img src="./img/book.png" class="w-10 px-2" alt="" />
 
-      <h1 class="text-center py-3">Book Shop...</h1>
+      <h1 id="demo" class="text-center py-3">Book Shop...</h1>
     </div>
     <div class="container py-5">
       <div class="form-floating mb-3">
@@ -27,7 +29,10 @@
           class="form-control border-start-0 border-end-0 border-top-0 rounded-0 shadow-none"
           id="bookName"
           placeholder="Book Name :"
+          oninput="validationForm(this)"
         />
+        <div class="d-none text-danger py-2">example : Selah Eltilmez</div>
+
         <label for="bookName">Book Name :</label>
       </div>
       <div class="form-floating mb-3">
@@ -36,7 +41,10 @@
           class="form-control border-start-0 border-end-0 border-top-0 rounded-0 shadow-none"
           id="bookPrice"
           placeholder="Book Price :"
+          oninput="validationForm(this)"
         />
+        <div class="d-none text-danger py-2">ex : 100</div>
+
         <label for="bookPrice">Book Price :</label>
       </div>
       <div class="form-floating mb-3">
@@ -46,10 +54,13 @@
           class="form-control border-start-0 border-end-0 border-top-0 rounded-0 shadow-none"
           id="bookCategory"
           placeholder="Book Category :"
+          oninput="validationForm(this)"
         />
+        <div class="d-none text-danger py-2">Quran or math or english....</div>
+
         <label for="bookCategory">Book Category :</label>
         <datalist id="category">
-          <option value="Queran">Queran</option>
+          <option value="Quran">Quran</option>
           <option value="Arabic">Arabic</option>
           <option value="math">math</option>
           <option value="biology">biology</option>
@@ -63,7 +74,14 @@
           class="form-control border-start-0 border-end-0 border-top-0 rounded-0 shadow-none"
           id="bookDesc"
           placeholder="Book Desc :"
+          oninput="validationForm(this)"
         />
+        <div class="d-none text-danger py-2">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto
+          id aut repudiandae assumenda, corporis modi deleniti, iure eligendi
+          magni veniam sed odit, laborum deserunt minima. Quis magni quasi
+          reiciendis repellat.
+        </div>
         <label for="bookDesc">Book Desc :</label>
       </div>
       <button id="addbtn" class="btn btn-info btn-add">AddBook</button>
@@ -73,7 +91,7 @@
       <input
         type="text"
         id="search"
-        placeholder="Search....."
+        placeholder="Search By Name......"
         class="search form-control border-start-0 border-end-0 border-top-0 rounded-0 shadow-none"
       />
     </div>
