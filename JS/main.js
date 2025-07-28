@@ -8,10 +8,6 @@ var updatebtn = document.getElementById('updatebtn');
 var search = document.getElementById('search');
 
 
-
-
-console.log(updatebtn);
-
 var bookList = [];
 var currentIndex;
 if(localStorage.getItem('bookList') != null){
@@ -19,9 +15,13 @@ if(localStorage.getItem('bookList') != null){
     display(bookList)
 }
 addbtn.onclick = function(){
+    if(isFormValid()){
     addBook()
     display(bookList)
     clear()
+    }else{
+//    alert('Please enter valid data');
+}
 }
 
 
@@ -35,9 +35,7 @@ addbtn.onclick = function(){
         category:bookCategory.value,
         desc:bookDesc.value,
      }
-     console.log(book);
      bookList.push(book);
-     console.log(bookList);
      localStorage.setItem('bookList' , JSON.stringify(bookList));
  }
 
@@ -60,7 +58,7 @@ function display(){
     }
 
     document.getElementById('body').innerHTML = box ;
-          addbtn.style.display = 'inline-block';
+    addbtn.style.display = 'inline-block';
     updatebtn.style.display = 'none'
 
 }
@@ -70,7 +68,15 @@ function display(){
 
  function clear(){
     for( var i = 0 ; i < inputs.length ; i++){
-        inputs[i].value = ''
+        inputs[i].value = '';
+        if(inputs[i].classList){
+        inputs[i].classList.remove('is-valid');
+        inputs[i].classList.remove('is-invalid');
+        }if(inputs[i].nextElementSibling){
+        inputs[i].nextElementSibling.classList.add('d-none');
+
+        }
+
     } 
 
  }
@@ -78,7 +84,7 @@ function display(){
  //delete function 
   function deleteBtn(index){
     bookList.splice(index,1);
-     localStorage.setItem('bookList' , JSON.stringify(bookList));
+    localStorage.setItem('bookList' , JSON.stringify(bookList));
 
     display()
 
@@ -116,14 +122,13 @@ bookPrice.value = bookList[bookIndex].price;
 bookCategory.value = bookList[bookIndex].category;
 bookDesc.value = bookList[bookIndex].desc;
 currentIndex = bookIndex;
-  addbtn.style.display = 'none';
-    updatebtn.style.display = 'inline-block';
+addbtn.style.display = 'none';
+updatebtn.style.display = 'inline-block';
 }
 updatebtn.onclick = function(){
     upDate();
-    display();
-    clear();
-}
+
+} 
 function upDate(){
     bookList[currentIndex].name = bookName.value;
     bookList[currentIndex].price = bookPrice.value;
@@ -132,7 +137,41 @@ function upDate(){
 
     localStorage.setItem('bookList',JSON.stringify(bookList));
     
+    display();
     clear();
-      addbtn.style.display = 'inline-block';
+    addbtn.style.display = 'inline-block';
     updatebtn.style.display = 'none'
 }
+
+
+
+function validationForm(element){
+    var regex ={
+        bookName:/^[A-Za-z\s]{4,25}$/,
+        bookPrice:/^[1-9][0-9]{2,6}$/,
+        bookCategory:/^(quran|math|arabic|english|biology|history)$/i,
+        bookDesc:/^.{4,200}$/
+    };
+    if(regex[element.id].test(element.value)){
+        element.classList.add('is-valid');
+        element.classList.remove('is-invalid');
+        element.nextElementSibling.classList.add('d-none');
+        return true;
+    }else{
+        element.classList.add('is-invalid');
+        element.classList.remove('is-valid');
+        element.nextElementSibling.classList.remove('d-none');
+        return false;
+
+    }
+}
+
+function isFormValid() {
+    var nameValid = validationForm(bookName);
+    var priceValid = validationForm(bookPrice);
+    var categoryValid = validationForm(bookCategory);
+    var descValid = validationForm(bookDesc);
+
+    return nameValid && priceValid && categoryValid && descValid;
+}
+
